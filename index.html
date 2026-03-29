@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>SPORT LINK - Premium Live</title>
+  <title>SPORTLINK - Premium Live</title>
   
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg-dark: #000000; /* Pure black for ultimate dark mode */
-      --bg-card: #0c0c0c; /* Dark charcoal for subtle contrast */
+      --bg-dark: #000000;
+      --bg-card: #0c0c0c;
       --gold-main: #FFD700;
-      --gold-glow: rgba(255, 215, 0, 0.3); /* Softer glow */
-      --text-white: #e0e0e0; /* Off-white for readability */
+      --gold-glow: rgba(255, 215, 0, 0.3);
+      --text-white: #e0e0e0;
       --text-gray: #888888;
-      --border-color: rgba(255, 255, 255, 0.05); /* Very subtle border */
-      --accent-red: #ff4d4d; /* Brighter red for LIVE */
+      --border-color: rgba(255, 255, 255, 0.05);
+      --accent-red: #ff4d4d;
       --gradient-bg-top: #0a0a0a;
       --gradient-bg-bottom: #000000;
     }
@@ -34,7 +34,7 @@
     body {
       margin: 0; padding: 0;
       background-color: var(--bg-dark);
-      background-image: radial-gradient(circle at top center, var(--gradient-bg-top), var(--gradient-bg-bottom) 70%); /* Wider dark gradient */
+      background-image: radial-gradient(circle at top center, var(--gradient-bg-top), var(--gradient-bg-bottom) 70%);
       font-family: 'Outfit', sans-serif;
       color: var(--text-white);
       padding-bottom: 80px;
@@ -43,7 +43,6 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* SCROLLBAR */
     body::-webkit-scrollbar { width: 8px; }
     body::-webkit-scrollbar-track { background: var(--bg-dark); }
     body::-webkit-scrollbar-thumb { background-color: #222; border-radius: 10px; border: 2px solid var(--bg-dark); }
@@ -51,14 +50,14 @@
 
     /* HEADER */
     header {
-      position: fixed; top: 0; width: 100%; height: 60px; /* Slightly shorter */
-      background: rgba(0, 0, 0, 0.98); /* Almost opaque */
-      backdrop-filter: blur(25px); /* More blur */
+      position: fixed; top: 0; width: 100%; height: 60px;
+      background: rgba(0, 0, 0, 0.98);
+      backdrop-filter: blur(25px);
       border-bottom: 1px solid var(--border-color);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 16px;
       z-index: 1000;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.9); /* Stronger shadow */
+      box-shadow: 0 10px 40px rgba(0,0,0,0.9);
     }
 
     .menu-icon { font-size: 26px; color: #fff; cursor: pointer; transition: 0.2s transform, 0.2s color; }
@@ -69,15 +68,15 @@
       display: flex; align-items: center; gap: 6px;
     }
     .logo-text { 
-      font-family: 'Rajdhani'; font-weight: 800; font-size: 20px;
-      color: #fff; letter-spacing: 1.5px;
-      text-shadow: 0 0 8px rgba(255,215,0,0.2); /* Softer glow */
+      font-family: 'Rajdhani'; font-weight: 800; font-size: 22px;
+      color: #fff; letter-spacing: 2px;
+      text-shadow: 0 0 8px rgba(255,215,0,0.2);
     }
     .logo-text span { color: var(--gold-main); }
 
     .header-live {
       display: flex; align-items: center; gap: 7px;
-      background: rgba(255, 77, 77, 0.15); /* Softer red background */
+      background: rgba(255, 77, 77, 0.15);
       border: 1px solid rgba(255, 77, 77, 0.3);
       padding: 4px 10px; border-radius: 20px;
       box-shadow: 0 0 12px rgba(255, 77, 77, 0.3);
@@ -87,6 +86,7 @@
       box-shadow: 0 0 8px var(--accent-red), 0 0 16px rgba(255,0,0,0.4);
       animation: blink 1s infinite cubic-bezier(0.4, 0, 0.6, 1);
     }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
     .h-text { font-size: 11px; font-weight: 700; color: var(--accent-red); font-family: 'Rajdhani'; letter-spacing: 0.8px; text-transform: uppercase; }
 
     /* VIDEO SECTION */
@@ -94,11 +94,11 @@
       margin-top: 60px;
       width: 100%; position: relative;
       background: #000;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.9); /* Stronger, deeper shadow */
-      border-bottom-left-radius: 15px; /* Even more roundness */
+      box-shadow: 0 18px 50px rgba(0,0,0,0.9);
+      border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.02); /* Very subtle outer border */
+      border: 1px solid rgba(255,255,255,0.02);
     }
     .video-container {
       width: 100%; aspect-ratio: 16/9;
@@ -112,20 +112,20 @@
     .video-bar { 
       height: 4px;
       width: 100%; 
-      background: linear-gradient(90deg, transparent 10%, #FFD700, #e6c200, transparent 90%); /* More focused gold line */
+      background: linear-gradient(90deg, transparent 10%, #FFD700, #e6c200, transparent 90%);
       opacity: 0.7; 
       box-shadow: 0 0 12px var(--gold-glow);
     }
 
     /* TICKER */
     .ticker-wrap {
-      background: var(--bg-card); /* Consistent with card bg */
+      background: var(--bg-card);
       height: 35px;
       overflow: hidden;
       display: flex; align-items: center; border-bottom: 1px solid var(--border-color);
       position: relative;
       padding: 0 12px;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.5); /* Subtle inner shadow */
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
     }
     .ticker-wrap::before, .ticker-wrap::after {
       content: ''; position: absolute; top: 0; bottom: 0; width: 35px; z-index: 2;
@@ -135,9 +135,9 @@
     .ticker-wrap::after { right: 0; background: linear-gradient(-90deg, var(--bg-card) 20%, transparent); }
     
     .ticker-text {
-      color: var(--gold-main); font-weight: 600; font-family: 'Outfit'; font-size: 13px; /* Softer, more modern ticker text */
+      color: var(--gold-main); font-weight: 600; font-family: 'Outfit'; font-size: 13px;
       letter-spacing: 0.8px; text-transform: uppercase;
-      white-space: nowrap; animation: scroll 20s linear infinite; /* Faster scroll */
+      white-space: nowrap; animation: scroll 20s linear infinite;
       padding-left: 100%;
       text-shadow: 0 0 4px rgba(255,215,0,0.1);
     }
@@ -146,7 +146,7 @@
     /* MAIN ACTIONS AREA */
     .action-section { 
       padding: 25px 16px; 
-      max-width: 600px; /* Slightly narrower for focus */
+      max-width: 600px;
       margin: 0 auto;
     }
 
@@ -154,9 +154,9 @@
     .daily-views-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 15px; /* Smaller radius for smaller card */
-      padding: 15px 20px; /* Reduced padding */
-      margin-bottom: 20px; /* Margin below for separation */
+      border-radius: 15px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
       display: flex; align-items: center; justify-content: space-between;
       box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -183,7 +183,7 @@
       font-weight: 600;
     }
     .daily-views-card .value { 
-      font-size: 20px; /* Smaller font size for value */
+      font-size: 20px;
       font-weight: 700; 
       color: var(--text-white); 
       font-family: 'Rajdhani';
@@ -191,43 +191,6 @@
 
     /* BUTTONS */
     .btn-group { display: flex; flex-direction: column; gap: 15px; }
-
-    .btn-main {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 20px; /* Reduced padding */
-      border-radius: 14px; /* Slightly less rounded */
-      text-decoration: none;
-      background: linear-gradient(45deg, #25D366, #1FAD4F); /* WhatsApp green */
-      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-main::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent 50%, rgba(255,255,255,0.1));
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-    .btn-main:active { 
-      transform: scale(0.98); 
-      box-shadow: 0 3px 10px rgba(37, 211, 102, 0.2); 
-    }
-    .btn-main:active::before { opacity: 1; }
-    
-    .btn-content { display: flex; align-items: center; gap: 12px; }
-    .btn-icon-circle { 
-      width: 36px; height: 36px; background: rgba(255,255,255,0.2); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; 
-      box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
-    }
-    .btn-icon-circle i { color: #fff; font-size: 20px; margin-right: 1px; margin-top: 1px;} 
-    
-    .btn-text h3 { margin: 0; color: #fff; font-size: 15px; font-weight: 700; font-family: 'Rajdhani'; text-transform: uppercase; letter-spacing: 0.5px; }
-    .btn-text p { margin: 0; color: rgba(255,255,255,0.8); font-size: 10px; font-weight: 600; text-transform: uppercase; }
-    .btn-arrow { color: #fff; font-size: 22px; }
 
     .btn-secondary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
     .btn-sec {
@@ -239,6 +202,7 @@
       transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 0 3px 12px rgba(0,0,0,0.3);
       backdrop-filter: blur(3px);
+      cursor: pointer;
     }
     .btn-sec:active { 
       background: #1a1a1a; 
@@ -260,7 +224,7 @@
     .sb-header { padding: 30px 25px; border-bottom: 1px solid #282828; background: #0e0e0e; }
     .sb-logo { 
       font-family: 'Rajdhani'; font-size: 24px; font-weight: 800; color: #fff; 
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-shadow: 0 0 10px rgba(255,215,0,0.2);
     }
     .sb-logo span { color: var(--gold-main); }
@@ -270,14 +234,15 @@
       color: #b0b0b0; text-decoration: none; font-size: 14px; font-weight: 500;
       transition: 0.2s ease; border-bottom: 1px solid #1f1f1f;
       text-transform: uppercase; letter-spacing: 0.5px;
+      cursor: pointer;
     }
     .sb-link:last-child { border-bottom: none; }
     .sb-link:active { 
-      background: #202020; color: #25D366; 
+      background: #202020; color: var(--gold-main); 
       transform: translateX(5px);
     }
     .sb-link i { color: #777; font-size: 20px; transition: 0.2s; }
-    .sb-link:active i { color: #25D366; }
+    .sb-link:active i { color: var(--gold-main); }
     
     .overlay { 
       position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 4999; 
@@ -285,10 +250,9 @@
     }
     .overlay.active { opacity: 1; pointer-events: auto; }
 
-    /* MEDIA QUERIES for larger screens */
     @media (min-width: 768px) {
       header { padding: 0 30px; height: 70px; }
-      .logo-text { font-size: 24px; }
+      .logo-text { font-size: 26px; }
       .h-text { font-size: 12px; }
       .video-wrapper { margin-top: 70px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; }
       .ticker-wrap { height: 40px; padding: 0 20px; }
@@ -298,12 +262,6 @@
       .daily-views-card .icon { font-size: 20px; }
       .daily-views-card .text { font-size: 13px; }
       .daily-views-card .value { font-size: 24px; }
-      .btn-main { padding: 18px 25px; border-radius: 16px; }
-      .btn-icon-circle { width: 40px; height: 40px; }
-      .btn-icon-circle i { font-size: 22px; }
-      .btn-text h3 { font-size: 16px; }
-      .btn-text p { font-size: 11px; }
-      .btn-arrow { font-size: 24px; }
       .btn-secondary-grid { gap: 20px; }
       .btn-sec { padding: 14px; border-radius: 14px; }
       .btn-sec i { font-size: 20px; }
@@ -322,7 +280,7 @@
   <header>
     <div class="menu-icon material-icons" onclick="toggleMenu()">notes</div>
     <div class="logo-container">
-      <span class="logo-text">SPORT <span>LINK</span></span>
+      <span class="logo-text">SPORT<span>LINK</span></span>
     </div>
     <div class="header-live">
       <div class="h-dot"></div> <span class="h-text">LIVE</span>
@@ -334,7 +292,6 @@
     <div class="sb-header">
       <div class="sb-logo">SPORT<span>LINK</span></div>
     </div>
-    <a href="#" id="side-whatsapp" class="sb-link"><i class="material-icons">send</i> Join WhatsApp</a>
     <a href="javascript:location.reload()" class="sb-link"><i class="material-icons">refresh</i> Refresh Page</a>
     <a href="javascript:sharePage()" class="sb-link"><i class="material-icons">share</i> Share App</a>
   </div>
@@ -343,7 +300,7 @@
   <!-- VIDEO -->
   <div class="video-wrapper">
     <div class="video-container">
-      <iframe src="https://shwe7ank-jeeyo.netlify.app/watch?id=1106" allowfullscreen allow="autoplay; encrypted-media" scrolling="no"></iframe>
+      <iframe src="https://star-sports-jt1.pages.dev/ss1eng" allowfullscreen allow="autoplay; encrypted-media" scrolling="no"></iframe>
     </div>
     <div class="video-bar"></div>
   </div>
@@ -351,7 +308,7 @@
   <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker-text">
-       WELCOME TO SPORT LINK 🏏 | JOIN WHATSAPP FOR MORE LINKS 🔗 | SHARE THIS LINK WITH FRIENDS 🔥 | NO BUFFERING HD STREAM
+       WELCOME TO SPORTLINK 🏏 | HD LIVE STREAM — NO BUFFERING 🔥 | SHARE THIS LINK WITH FRIENDS 🔗 | ENJOY THE GAME
     </div>
   </div>
 
@@ -365,19 +322,8 @@
       <span class="value" id="total-views-count">...</span>
     </div>
 
-    <!-- MAIN BUTTONS -->
+    <!-- BUTTONS -->
     <div class="btn-group">
-      <a href="#" id="main-btn" class="btn-main">
-        <div class="btn-content">
-          <div class="btn-icon-circle"><i class="material-icons">send</i></div>
-          <div class="btn-text">
-            <h3>Join WhatsApp</h3>
-            <p>For Link Backups & Updates</p>
-          </div>
-        </div>
-        <i class="material-icons btn-arrow">chevron_right</i>
-      </a>
-
       <div class="btn-secondary-grid">
         <a href="javascript:void(0)" onclick="sharePage()" class="btn-sec">
           <i class="material-icons">share</i>
@@ -397,13 +343,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
   <script>
-    // ================= CONFIG =================
-    const WEBSITE_ID = "sportlink_english"; // Updated WEBSITE_ID
-    const WHATSAPP_LINK = "https://whatsapp.com/channel/0029VbC2oQsC6ZvmwpR3v73v";
-    // ==========================================
-
-    document.getElementById('side-whatsapp').href = WHATSAPP_LINK;
-    document.getElementById('main-btn').href = WHATSAPP_LINK;
+    const WEBSITE_ID = "channel_english";
 
     function toggleMenu() {
       document.getElementById('sidebar').classList.toggle('open');
@@ -437,11 +377,9 @@
     if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // DAILY VISITORS LOGIC - MODIFIED to count every refresh
     const todayStr = new Date().toISOString().slice(0, 10); 
-    const visitRef = db.ref('daily_stats_v4/' + WEBSITE_ID + '/' + todayStr); // Updated Firebase path
+    const visitRef = db.ref('daily_stats_v4/' + WEBSITE_ID + '/' + todayStr);
     
-    // Increment on every page load/refresh
     visitRef.transaction(current => (current || 0) + 1);
 
     visitRef.on('value', (snap) => {
