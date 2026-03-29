@@ -3,26 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Sportlink Live Stream</title>
+  <title>SPORT LINK - Premium Live</title>
   
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg-dark: #000000;
-      --bg-card: #0c0c0c;
+      --bg-dark: #000000; /* Pure black for ultimate dark mode */
+      --bg-card: #0c0c0c; /* Dark charcoal for subtle contrast */
       --gold-main: #FFD700;
-      --gold-glow: rgba(255, 215, 0, 0.3);
-      --text-white: #e0e0e0;
+      --gold-glow: rgba(255, 215, 0, 0.3); /* Softer glow */
+      --text-white: #e0e0e0; /* Off-white for readability */
       --text-gray: #888888;
-      --border-color: rgba(255, 255, 255, 0.05);
-      --accent-red: #ff4d4d;
+      --border-color: rgba(255, 255, 255, 0.05); /* Very subtle border */
+      --accent-red: #ff4d4d; /* Brighter red for LIVE */
       --gradient-bg-top: #0a0a0a;
       --gradient-bg-bottom: #000000;
-      --whatsapp: #25D366;
-      --whatsapp-dark: #1da851;
-      --whatsapp-glow: rgba(37, 211, 102, 0.35);
     }
 
     * { 
@@ -195,42 +192,13 @@
     /* BUTTONS */
     .btn-group { display: flex; flex-direction: column; gap: 15px; }
 
-    /* WHATSAPP MAIN BUTTON */
-    .btn-whatsapp {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 20px;
-      border-radius: 14px;
-      text-decoration: none;
-      background: linear-gradient(45deg, var(--whatsapp), var(--whatsapp-dark));
-      box-shadow: 0 5px 22px var(--whatsapp-glow);
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
-      position: relative; overflow: hidden;
-    }
-    .btn-whatsapp::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(45deg, rgba(255,255,255,0.12), transparent 50%, rgba(255,255,255,0.08));
-      opacity: 0; transition: opacity 0.2s ease;
-    }
-    .btn-whatsapp:active { transform: scale(0.98); box-shadow: 0 3px 10px var(--whatsapp-glow); }
-    .btn-whatsapp:active::before { opacity: 1; }
-    .btn-whatsapp .btn-content { display: flex; align-items: center; gap: 12px; }
-    .btn-whatsapp .btn-icon-circle {
-      width: 36px; height: 36px; background: rgba(0,0,0,0.15); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .btn-whatsapp .wa-icon { width: 22px; height: 22px; fill: #fff; }
-    .btn-whatsapp .btn-text h3 { margin: 0; color: #fff; font-size: 15px; font-weight: 700; font-family: 'Rajdhani'; text-transform: uppercase; letter-spacing: 0.5px; }
-    .btn-whatsapp .btn-text p { margin: 0; color: rgba(255,255,255,0.75); font-size: 10px; font-weight: 600; text-transform: uppercase; }
-    .btn-whatsapp .btn-arrow { color: #fff; font-size: 22px; }
-
     .btn-main {
       display: flex; align-items: center; justify-content: space-between;
       padding: 16px 20px; /* Reduced padding */
       border-radius: 14px; /* Slightly less rounded */
       text-decoration: none;
-      background: linear-gradient(45deg, #FFD700, #ffc800); /* Brighter gold */
-      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+      background: linear-gradient(45deg, #25D366, #1FAD4F); /* WhatsApp green */
+      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
       transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
       position: relative;
       overflow: hidden;
@@ -245,21 +213,21 @@
     }
     .btn-main:active { 
       transform: scale(0.98); 
-      box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2); 
+      box-shadow: 0 3px 10px rgba(37, 211, 102, 0.2); 
     }
     .btn-main:active::before { opacity: 1; }
     
     .btn-content { display: flex; align-items: center; gap: 12px; }
     .btn-icon-circle { 
-      width: 36px; height: 36px; background: rgba(0,0,0,0.1); border-radius: 50%;
+      width: 36px; height: 36px; background: rgba(255,255,255,0.2); border-radius: 50%;
       display: flex; align-items: center; justify-content: center; 
       box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
     }
-    .btn-icon-circle i { color: #000; font-size: 20px; margin-right: 1px; margin-top: 1px;} 
+    .btn-icon-circle i { color: #fff; font-size: 20px; margin-right: 1px; margin-top: 1px;} 
     
-    .btn-text h3 { margin: 0; color: #000; font-size: 15px; font-weight: 700; font-family: 'Rajdhani'; text-transform: uppercase; letter-spacing: 0.5px; }
-    .btn-text p { margin: 0; color: #333; font-size: 10px; font-weight: 600; text-transform: uppercase; }
-    .btn-arrow { color: #000; font-size: 22px; }
+    .btn-text h3 { margin: 0; color: #fff; font-size: 15px; font-weight: 700; font-family: 'Rajdhani'; text-transform: uppercase; letter-spacing: 0.5px; }
+    .btn-text p { margin: 0; color: rgba(255,255,255,0.8); font-size: 10px; font-weight: 600; text-transform: uppercase; }
+    .btn-arrow { color: #fff; font-size: 22px; }
 
     .btn-secondary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
     .btn-sec {
@@ -279,57 +247,6 @@
     }
     .btn-sec i { font-size: 18px; color: #999; }
     .btn-sec span { font-size: 12px; color: #ccc; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-
-    /* POPUP */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.98);
-      z-index: 9999; display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: 0.4s ease-in-out; backdrop-filter: blur(20px);
-    }
-    .modal-overlay.active { opacity: 1; pointer-events: auto; }
-
-    .modal-box {
-      width: 90%; max-width: 340px;
-      background: linear-gradient(135deg, #151515, #080808);
-      border: 1px solid #333;
-      border-radius: 25px;
-      padding: 30px 25px;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-      transform: scale(0.85); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .modal-overlay.active .modal-box { transform: scale(1); }
-
-    .pop-icon { 
-      width: 60px; height: 60px; background: rgba(255, 215, 0, 0.15);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px;
-      box-shadow: 0 0 15px rgba(255,215,0,0.3);
-    }
-    .pop-icon i { font-size: 32px; color: var(--gold-main); text-shadow: 0 0 6px var(--gold-main); }
-    
-    .pop-title { 
-      color: #fff; font-size: 20px; font-weight: 800; margin: 0 0 8px; 
-      font-family: 'Rajdhani'; letter-spacing: 0.7px; text-transform: uppercase;
-    }
-    .pop-desc { color: #aaa; font-size: 13px; margin-bottom: 25px; line-height: 1.5; }
-
-    .pop-btn {
-      display: block; width: 100%; padding: 14px; border-radius: 12px;
-      text-decoration: none; font-weight: 700; font-size: 14px; 
-      transition: 0.2s ease; cursor: pointer;
-      text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .pb-join { 
-      background: var(--gold-main); color: #000; margin-bottom: 10px; 
-      box-shadow: 0 4px 15px rgba(255,215,0,0.3); 
-    }
-    .pb-join:active { background: #e6c200; transform: translateY(1px); box-shadow: 0 2px 8px rgba(255,215,0,0.2); }
-
-    .pb-close { 
-      background: transparent; color: #777; border: 1px solid #3a3a3a; 
-    }
-    .pb-close:active { background: #222; color: #ccc; border-color: #444; transform: translateY(1px); }
 
     /* SIDEBAR */
     .sidebar {
@@ -356,11 +273,11 @@
     }
     .sb-link:last-child { border-bottom: none; }
     .sb-link:active { 
-      background: #202020; color: var(--gold-main); 
+      background: #202020; color: #25D366; 
       transform: translateX(5px);
     }
     .sb-link i { color: #777; font-size: 20px; transition: 0.2s; }
-    .sb-link:active i { color: var(--gold-main); }
+    .sb-link:active i { color: #25D366; }
     
     .overlay { 
       position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 4999; 
@@ -401,13 +318,11 @@
 </head>
 <body>
 
-  <!-- POPUP REMOVED -->
-
   <!-- HEADER -->
   <header>
     <div class="menu-icon material-icons" onclick="toggleMenu()">notes</div>
     <div class="logo-container">
-      <span class="logo-text">Sportlink<span>LIVE</span></span>
+      <span class="logo-text">SPORT <span>LINK</span></span>
     </div>
     <div class="header-live">
       <div class="h-dot"></div> <span class="h-text">LIVE</span>
@@ -417,13 +332,9 @@
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <div class="sb-header">
-      <div class="sb-logo">Sportlink<span>LIVE</span></div>
+      <div class="sb-logo">SPORT<span>LINK</span></div>
     </div>
-    <a href="https://whatsapp.com/channel/0029VbC2oQsC6ZvmwpR3v73v" target="_blank" class="sb-link" style="color:#25D366;">
-      <svg style="width:20px;height:20px;fill:#25D366;flex-shrink:0;" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.478.677 4.797 1.854 6.785L2 30l7.432-1.818A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.54 11.54 0 01-5.88-1.604l-.42-.25-4.41 1.08 1.12-4.3-.275-.44A11.56 11.56 0 014.4 16C4.4 9.595 9.595 4.4 16 4.4S27.6 9.595 27.6 16 22.405 27.6 16 27.6zm6.34-8.64c-.347-.174-2.056-1.014-2.376-1.13-.32-.116-.552-.174-.784.174-.232.347-.9 1.13-1.103 1.362-.203.232-.405.26-.752.087-.347-.174-1.465-.54-2.79-1.72-1.03-.92-1.726-2.055-1.93-2.402-.203-.347-.022-.535.153-.707.157-.155.347-.405.52-.608.174-.203.232-.347.347-.578.116-.232.058-.434-.029-.608-.087-.174-.784-1.89-1.074-2.59-.283-.68-.57-.587-.784-.598l-.667-.012c-.232 0-.608.087-.927.434s-1.218 1.19-1.218 2.9 1.247 3.365 1.42 3.597c.174.232 2.453 3.746 5.943 5.252.83.358 1.48.572 1.985.732.834.265 1.594.228 2.195.138.67-.1 2.056-.84 2.347-1.652.29-.81.29-1.506.203-1.652-.087-.145-.32-.232-.667-.405z"/></svg>
-      Join WhatsApp Channel
-    </a>
-    <a href="#" id="side-instagram" class="sb-link"><i class="material-icons">support_agent</i> Customer Support</a>
+    <a href="#" id="side-whatsapp" class="sb-link"><i class="material-icons">send</i> Join WhatsApp</a>
     <a href="javascript:location.reload()" class="sb-link"><i class="material-icons">refresh</i> Refresh Page</a>
     <a href="javascript:sharePage()" class="sb-link"><i class="material-icons">share</i> Share App</a>
   </div>
@@ -432,7 +343,7 @@
   <!-- VIDEO -->
   <div class="video-wrapper">
     <div class="video-container">
-      <iframe src="https://dash.vodep39240327.workers.dev/?url=https://jiotvmblive.cdn.jio.com//bpk-tv/Star_Sports_HD1_BTS/output/index.mpd?name=Star_Sports_HD1&keyId=965dc2ddb1d85138ad787999a7f30ca5&key=859695076e67fe961836b564db6d689c&cookie=__hdnea__=st=1774648839~exp=1774735239~acl=/*~hmac=9c4b413ec2dc4f7dc1703988d9abc4902473253183e8b1140920ddfa29cb1cfd" allowfullscreen allow="autoplay; encrypted-media" scrolling="no"></iframe>
+      <iframe src="https://shwe7ank-jeeyo.netlify.app/watch?id=1106" allowfullscreen allow="autoplay; encrypted-media" scrolling="no"></iframe>
     </div>
     <div class="video-bar"></div>
   </div>
@@ -440,7 +351,7 @@
   <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker-text">
-       WELCOME TO Sportlink LIVE 🏏 | JOIN WHATSAPP FOR BACKUP LINKS 🔗 | SHARE THIS LINK WITH FRIENDS 🔥 | NO BUFFERING HD STREAM
+       WELCOME TO SPORT LINK 🏏 | JOIN WHATSAPP FOR MORE LINKS 🔗 | SHARE THIS LINK WITH FRIENDS 🔥 | NO BUFFERING HD STREAM
     </div>
   </div>
 
@@ -456,16 +367,12 @@
 
     <!-- MAIN BUTTONS -->
     <div class="btn-group">
-      <a href="https://whatsapp.com/channel/0029VbC2oQsC6ZvmwpR3v73v" target="_blank" class="btn-whatsapp">
+      <a href="#" id="main-btn" class="btn-main">
         <div class="btn-content">
-          <div class="btn-icon-circle">
-            <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16 2C8.268 2 2 8.268 2 16c0 2.478.677 4.797 1.854 6.785L2 30l7.432-1.818A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.54 11.54 0 01-5.88-1.604l-.42-.25-4.41 1.08 1.12-4.3-.275-.44A11.56 11.56 0 014.4 16C4.4 9.595 9.595 4.4 16 4.4S27.6 9.595 27.6 16 22.405 27.6 16 27.6zm6.34-8.64c-.347-.174-2.056-1.014-2.376-1.13-.32-.116-.552-.174-.784.174-.232.347-.9 1.13-1.103 1.362-.203.232-.405.26-.752.087-.347-.174-1.465-.54-2.79-1.72-1.03-.92-1.726-2.055-1.93-2.402-.203-.347-.022-.535.153-.707.157-.155.347-.405.52-.608.174-.203.232-.347.347-.578.116-.232.058-.434-.029-.608-.087-.174-.784-1.89-1.074-2.59-.283-.68-.57-.587-.784-.598l-.667-.012c-.232 0-.608.087-.927.434s-1.218 1.19-1.218 2.9 1.247 3.365 1.42 3.597c.174.232 2.453 3.746 5.943 5.252.83.358 1.48.572 1.985.732.834.265 1.594.228 2.195.138.67-.1 2.056-.84 2.347-1.652.29-.81.29-1.506.203-1.652-.087-.145-.32-.232-.667-.405z"/>
-            </svg>
-          </div>
+          <div class="btn-icon-circle"><i class="material-icons">send</i></div>
           <div class="btn-text">
-            <h3>Join WhatsApp Channel</h3>
-            <p>Get Backup Links & Live Updates</p>
+            <h3>Join WhatsApp</h3>
+            <p>For Link Backups & Updates</p>
           </div>
         </div>
         <i class="material-icons btn-arrow">chevron_right</i>
@@ -491,12 +398,12 @@
 
   <script>
     // ================= CONFIG =================
-    const WEBSITE_ID = "channel_english"; // Changed WEBSITE_ID again for a fresh counter
-    const TELEGRAM_LINK = "https://t.me/+rwZKMV0-L8wyOTll";
-    const INSTAGRAM_LINK = "https://www.instagram.com/cricket_yoddha?igsh=MWpoZDltdjZzYnRncw=="; 
+    const WEBSITE_ID = "sportlink_english"; // Updated WEBSITE_ID
+    const WHATSAPP_LINK = "https://whatsapp.com/channel/0029VbC2oQsC6ZvmwpR3v73v";
     // ==========================================
 
-    document.getElementById('side-instagram').href = INSTAGRAM_LINK;
+    document.getElementById('side-whatsapp').href = WHATSAPP_LINK;
+    document.getElementById('main-btn').href = WHATSAPP_LINK;
 
     function toggleMenu() {
       document.getElementById('sidebar').classList.toggle('open');
@@ -504,7 +411,7 @@
     }
 
     async function sharePage() {
-      if(navigator.share) await navigator.share({title:'Watch Live Cricket HD', text: 'Watch Live Cricket HD without buffering!', url: window.location.href});
+      if(navigator.share) await navigator.share({title:'Watch Live Sports HD', text: 'Watch Live Sports HD without buffering!', url: window.location.href});
       else {
         const dummy = document.createElement("textarea");
         document.body.appendChild(dummy);
@@ -532,7 +439,7 @@
 
     // DAILY VISITORS LOGIC - MODIFIED to count every refresh
     const todayStr = new Date().toISOString().slice(0, 10); 
-    const visitRef = db.ref('daily_stats_v4/' + WEBSITE_ID + '/' + todayStr); // Changed Firebase path
+    const visitRef = db.ref('daily_stats_v4/' + WEBSITE_ID + '/' + todayStr); // Updated Firebase path
     
     // Increment on every page load/refresh
     visitRef.transaction(current => (current || 0) + 1);
