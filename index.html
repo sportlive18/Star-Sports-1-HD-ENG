@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>SPORTLINK - Live</title>
+  <title>SPORTLINK - Premium Live</title>
   
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,6 +18,8 @@
       --text-gray: #888888;
       --border-color: rgba(255, 255, 255, 0.05);
       --accent-red: #ff4d4d;
+      --whatsapp-green: #25D366;
+      --whatsapp-glow: rgba(37, 211, 102, 0.3);
       --gradient-bg-top: #0a0a0a;
       --gradient-bg-bottom: #000000;
     }
@@ -192,6 +194,62 @@
     /* BUTTONS */
     .btn-group { display: flex; flex-direction: column; gap: 15px; }
 
+    /* WHATSAPP BUTTON */
+    .btn-whatsapp {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(37, 211, 102, 0.08) 100%);
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      padding: 14px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: #fff;
+      font-family: 'Outfit';
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      box-shadow: 0 0 18px rgba(37, 211, 102, 0.15), 0 4px 15px rgba(0,0,0,0.4);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-whatsapp::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(37,211,102,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .btn-whatsapp:active {
+      transform: translateY(1px);
+      box-shadow: 0 0 10px rgba(37, 211, 102, 0.1), 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .btn-whatsapp .wa-icon {
+      width: 22px; height: 22px; flex-shrink: 0;
+      filter: drop-shadow(0 0 4px rgba(37,211,102,0.5));
+    }
+    .btn-whatsapp .wa-label { flex-grow: 1; text-align: left; }
+    .btn-whatsapp .wa-label small {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--whatsapp-green);
+      letter-spacing: 0.5px;
+      margin-bottom: 1px;
+      text-transform: uppercase;
+    }
+    .btn-whatsapp .wa-label strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .btn-whatsapp .wa-arrow {
+      font-size: 18px;
+      color: var(--whatsapp-green);
+      opacity: 0.8;
+    }
+
     .btn-secondary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
     .btn-sec {
       background: var(--bg-card);
@@ -243,6 +301,9 @@
     }
     .sb-link i { color: #777; font-size: 20px; transition: 0.2s; }
     .sb-link:active i { color: var(--gold-main); }
+
+    /* WhatsApp sidebar icon */
+    .sb-link .wa-sb-icon { width: 20px; height: 20px; }
     
     .overlay { 
       position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 4999; 
@@ -262,6 +323,7 @@
       .daily-views-card .icon { font-size: 20px; }
       .daily-views-card .text { font-size: 13px; }
       .daily-views-card .value { font-size: 24px; }
+      .btn-whatsapp { padding: 16px 22px; border-radius: 16px; }
       .btn-secondary-grid { gap: 20px; }
       .btn-sec { padding: 14px; border-radius: 14px; }
       .btn-sec i { font-size: 20px; }
@@ -294,6 +356,10 @@
     </div>
     <a href="javascript:location.reload()" class="sb-link"><i class="material-icons">refresh</i> Refresh Page</a>
     <a href="javascript:sharePage()" class="sb-link"><i class="material-icons">share</i> Share App</a>
+    <a href="https://whatsapp.com/channel/0029VbC2oQsC6ZvmwpR3v73v" target="_blank" rel="noopener" class="sb-link">
+      <svg class="wa-sb-icon" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Channel
+    </a>
   </div>
   <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
@@ -308,7 +374,7 @@
   <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker-text">
-       WELCOME TO SPORTLINK 🏏 | HD LIVE STREAM — NO BUFFERING 🔥 | SHARE THIS LINK WITH FRIENDS 🔗 | ENJOY THE GAME
+       WELCOME TO SPORTLINK 🏏 | HD LIVE STREAM — NO BUFFERING 🔥 | JOIN OUR WHATSAPP CHANNEL FOR UPDATES 📲 | SHARE THIS LINK WITH FRIENDS 🔗 | ENJOY THE GAME
     </div>
   </div>
 
@@ -324,6 +390,17 @@
 
     <!-- BUTTONS -->
     <div class="btn-group">
+
+      <!-- WHATSAPP CHANNEL BUTTON -->
+      <a href="https://whatsapp.com/channel/0029VbC2oQsC6ZvmwpR3v73v" target="_blank" rel="noopener" class="btn-whatsapp">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div class="wa-label">
+          <small>Stay Updated</small>
+          <strong>Join WhatsApp Channel</strong>
+        </div>
+        <i class="material-icons wa-arrow">chevron_right</i>
+      </a>
+
       <div class="btn-secondary-grid">
         <a href="javascript:void(0)" onclick="sharePage()" class="btn-sec">
           <i class="material-icons">share</i>
