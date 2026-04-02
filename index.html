@@ -1,468 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>SPORTLINK - Premium Live</title>
-  
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Star Sports - Sportlink </title>
+<meta name="referrer" content="no-referrer">
+<script src="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/shaka-player.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/controls.css"/>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMP9REY96D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMP9REY96D');
+</script>
   <style>
-    :root {
-      --bg-dark: #000000;
-      --bg-card: #0c0c0c;
-      --gold-main: #FFD700;
-      --gold-glow: rgba(255, 215, 0, 0.3);
-      --text-white: #e0e0e0;
-      --text-gray: #888888;
-      --border-color: rgba(255, 255, 255, 0.05);
-      --accent-red: #ff4d4d;
-      --whatsapp-green: #25D366;
-      --whatsapp-glow: rgba(37, 211, 102, 0.3);
-      --gradient-bg-top: #0a0a0a;
-      --gradient-bg-bottom: #000000;
-    }
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
 
-    * { 
-      box-sizing: border-box; 
-      -webkit-tap-highlight-color: transparent; 
-      outline: none; 
-      user-select: none; 
-      -webkit-touch-callout: none;
-      -webkit-text-size-adjust: 100%;
-    }
-    
-    body {
-      margin: 0; padding: 0;
-      background-color: var(--bg-dark);
-      background-image: radial-gradient(circle at top center, var(--gradient-bg-top), var(--gradient-bg-bottom) 70%);
-      font-family: 'Outfit', sans-serif;
-      color: var(--text-white);
-      padding-bottom: 80px;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+.shaka-video-container{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+}
 
-    body::-webkit-scrollbar { width: 8px; }
-    body::-webkit-scrollbar-track { background: var(--bg-dark); }
-    body::-webkit-scrollbar-thumb { background-color: #222; border-radius: 10px; border: 2px solid var(--bg-dark); }
-    body::-webkit-scrollbar-thumb:hover { background-color: #444; }
+video{
+width:100%;
+height:100%;
+object-fit:contain;
+background:#000;
+}
 
-    /* HEADER */
-    header {
-      position: fixed; top: 0; width: 100%; height: 60px;
-      background: rgba(0, 0, 0, 0.98);
-      backdrop-filter: blur(25px);
-      border-bottom: 1px solid var(--border-color);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 16px;
-      z-index: 1000;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.9);
-    }
+.custom-watermark{
+position:absolute;
+z-index:40;
+pointer-events:none;
+top:65%;
+left:6%;
+transform:translateY(-50%);
+font-size:11px;
+font-weight:600;
+color:rgba(255,255,255,0.12);
+}
 
-    .menu-icon { font-size: 26px; color: #fff; cursor: pointer; transition: 0.2s transform, 0.2s color; }
-    .menu-icon:active { color: var(--gold-main); transform: scale(0.9); }
-    
-    .logo-container { 
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); 
-      display: flex; align-items: center; gap: 6px;
-    }
-    .logo-text { 
-      font-family: 'Rajdhani'; font-weight: 800; font-size: 22px;
-      color: #fff; letter-spacing: 2px;
-      text-shadow: 0 0 8px rgba(255,215,0,0.2);
-    }
-    .logo-text span { color: var(--gold-main); }
+/* --- Updated Modern Blocker Styles --- */
+.block-overlay{
+position:fixed;
+inset:0;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+background:radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+text-align:center;
+}
 
-    .header-live {
-      display: flex; align-items: center; gap: 7px;
-      background: rgba(255, 77, 77, 0.15);
-      border: 1px solid rgba(255, 77, 77, 0.3);
-      padding: 4px 10px; border-radius: 20px;
-      box-shadow: 0 0 12px rgba(255, 77, 77, 0.3);
-    }
-    .h-dot { 
-      width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; 
-      box-shadow: 0 0 8px var(--accent-red), 0 0 16px rgba(255,0,0,0.4);
-      animation: blink 1s infinite cubic-bezier(0.4, 0, 0.6, 1);
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-    .h-text { font-size: 11px; font-weight: 700; color: var(--accent-red); font-family: 'Rajdhani'; letter-spacing: 0.8px; text-transform: uppercase; }
+.block-box{
+padding:40px;
+max-width:500px;
+width:90%;
+background:rgba(20, 20, 20, 0.95);
+border-radius:16px;
+border:1px solid rgba(255, 255, 255, 0.1);
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+animation: fadeInUp 0.6s ease-out;
+}
 
-    /* VIDEO SECTION */
-    .video-wrapper {
-      margin-top: 60px;
-      width: 100%; position: relative;
-      background: #000;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.9);
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.02);
-    }
-    .video-container {
-      width: 100%; aspect-ratio: 16/9;
-      position: relative; overflow: hidden;
-      background-color: #000;
-    }
-    .video-container iframe { 
-      width: 100%; height: 100%; border: none; display: block; 
-    }
-    
-    .video-bar { 
-      height: 4px;
-      width: 100%; 
-      background: linear-gradient(90deg, transparent 10%, #FFD700, #e6c200, transparent 90%);
-      opacity: 0.7; 
-      box-shadow: 0 0 12px var(--gold-glow);
-    }
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
 
-    /* TICKER */
-    .ticker-wrap {
-      background: var(--bg-card);
-      height: 35px;
-      overflow: hidden;
-      display: flex; align-items: center; border-bottom: 1px solid var(--border-color);
-      position: relative;
-      padding: 0 12px;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
-    }
-    .ticker-wrap::before, .ticker-wrap::after {
-      content: ''; position: absolute; top: 0; bottom: 0; width: 35px; z-index: 2;
-      pointer-events: none;
-    }
-    .ticker-wrap::before { left: 0; background: linear-gradient(90deg, var(--bg-card) 20%, transparent); }
-    .ticker-wrap::after { right: 0; background: linear-gradient(-90deg, var(--bg-card) 20%, transparent); }
-    
-    .ticker-text {
-      color: var(--gold-main); font-weight: 600; font-family: 'Outfit'; font-size: 13px;
-      letter-spacing: 0.8px; text-transform: uppercase;
-      white-space: nowrap; animation: scroll 20s linear infinite;
-      padding-left: 100%;
-      text-shadow: 0 0 4px rgba(255,215,0,0.1);
-    }
-    @keyframes scroll { 100% { transform: translateX(-100%); } }
+.block-title{
+font-size:42px;
+font-weight:800;
+color:#ffffff;
+text-transform:uppercase;
+letter-spacing:2px;
+margin-bottom:20px;
+text-shadow:0 0 10px rgba(255, 0, 0, 0.3);
+}
 
-    /* MAIN ACTIONS AREA */
-    .action-section { 
-      padding: 25px 16px; 
-      max-width: 600px;
-      margin: 0 auto;
-    }
+.block-sub{
+font-size:14px;
+font-weight:500;
+color:rgba(255, 255, 255, 0.6);
+line-height:1.6;
+}
 
-    /* SMALL DAILY VIEWS CARD */
-    .daily-views-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 15px;
-      padding: 15px 20px;
-      margin-bottom: 20px;
-      display: flex; align-items: center; justify-content: space-between;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .daily-views-card::before {
-      content: '';
-      position: absolute;
-      top: -10px; left: -10px; width: 40px; height: 40px;
-      background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
-      pointer-events: none;
-      transform: rotate(45deg);
-    }
-    .daily-views-card:active { transform: translateY(1px); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+/* Icon hidden as requested, but keeping structure if needed later */
+.block-icon{ display: none; }
+.block-note{ display: none; }
 
-    .daily-views-card .icon { font-size: 18px; color: var(--gold-main); margin-right: 10px; }
-    .daily-views-card .text { 
-      flex-grow: 1;
-      font-size: 12px; 
-      color: var(--text-gray); 
-      text-transform: uppercase; 
-      letter-spacing: 0.7px; 
-      font-weight: 600;
-    }
-    .daily-views-card .value { 
-      font-size: 20px;
-      font-weight: 700; 
-      color: var(--text-white); 
-      font-family: 'Rajdhani';
-    }
-
-    /* BUTTONS */
-    .btn-group { display: flex; flex-direction: column; gap: 15px; }
-
-    /* WHATSAPP BUTTON */
-    .btn-whatsapp {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(37, 211, 102, 0.08) 100%);
-      border: 1px solid rgba(37, 211, 102, 0.35);
-      padding: 14px 20px;
-      border-radius: 14px;
-      text-decoration: none;
-      color: #fff;
-      font-family: 'Outfit';
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      box-shadow: 0 0 18px rgba(37, 211, 102, 0.15), 0 4px 15px rgba(0,0,0,0.4);
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-whatsapp::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(37,211,102,0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .btn-whatsapp:active {
-      transform: translateY(1px);
-      box-shadow: 0 0 10px rgba(37, 211, 102, 0.1), 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .btn-whatsapp .wa-icon {
-      width: 22px; height: 22px; flex-shrink: 0;
-      filter: drop-shadow(0 0 4px rgba(37,211,102,0.5));
-    }
-    .btn-whatsapp .wa-label { flex-grow: 1; text-align: left; }
-    .btn-whatsapp .wa-label small {
-      display: block;
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--whatsapp-green);
-      letter-spacing: 0.5px;
-      margin-bottom: 1px;
-      text-transform: uppercase;
-    }
-    .btn-whatsapp .wa-label strong {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .btn-whatsapp .wa-arrow {
-      font-size: 18px;
-      color: var(--whatsapp-green);
-      opacity: 0.8;
-    }
-
-    .btn-secondary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    .btn-sec {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 12px; border-radius: 12px;
-      text-decoration: none;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
-      backdrop-filter: blur(3px);
-      cursor: pointer;
-    }
-    .btn-sec:active { 
-      background: #1a1a1a; 
-      transform: translateY(1px); 
-      box-shadow: 0 1px 5px rgba(0,0,0,0.15); 
-    }
-    .btn-sec i { font-size: 18px; color: #999; }
-    .btn-sec span { font-size: 12px; color: #ccc; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-
-    /* SIDEBAR */
-    .sidebar {
-      position: fixed; left: -100%; top: 0; width: 280px; height: 100%;
-      background: linear-gradient(180deg, #181818, #050505);
-      z-index: 5000; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border-right: 1px solid #282828;
-      box-shadow: 6px 0 25px rgba(0,0,0,0.7);
-    }
-    .sidebar.open { left: 0; }
-    .sb-header { padding: 30px 25px; border-bottom: 1px solid #282828; background: #0e0e0e; }
-    .sb-logo { 
-      font-family: 'Rajdhani'; font-size: 24px; font-weight: 800; color: #fff; 
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(255,215,0,0.2);
-    }
-    .sb-logo span { color: var(--gold-main); }
-
-    .sb-link {
-      display: flex; align-items: center; gap: 16px; padding: 18px 25px;
-      color: #b0b0b0; text-decoration: none; font-size: 14px; font-weight: 500;
-      transition: 0.2s ease; border-bottom: 1px solid #1f1f1f;
-      text-transform: uppercase; letter-spacing: 0.5px;
-      cursor: pointer;
-    }
-    .sb-link:last-child { border-bottom: none; }
-    .sb-link:active { 
-      background: #202020; color: var(--gold-main); 
-      transform: translateX(5px);
-    }
-    .sb-link i { color: #777; font-size: 20px; transition: 0.2s; }
-    .sb-link:active i { color: var(--gold-main); }
-
-    /* WhatsApp sidebar icon */
-    .sb-link .wa-sb-icon { width: 20px; height: 20px; }
-    
-    .overlay { 
-      position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 4999; 
-      opacity: 0; pointer-events: none; transition: 0.3s ease; 
-    }
-    .overlay.active { opacity: 1; pointer-events: auto; }
-
-    @media (min-width: 768px) {
-      header { padding: 0 30px; height: 70px; }
-      .logo-text { font-size: 26px; }
-      .h-text { font-size: 12px; }
-      .video-wrapper { margin-top: 70px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; }
-      .ticker-wrap { height: 40px; padding: 0 20px; }
-      .ticker-text { font-size: 14px; }
-      .action-section { padding: 35px 25px; max-width: 650px; }
-      .daily-views-card { padding: 18px 25px; margin-bottom: 25px; }
-      .daily-views-card .icon { font-size: 20px; }
-      .daily-views-card .text { font-size: 13px; }
-      .daily-views-card .value { font-size: 24px; }
-      .btn-whatsapp { padding: 16px 22px; border-radius: 16px; }
-      .btn-secondary-grid { gap: 20px; }
-      .btn-sec { padding: 14px; border-radius: 14px; }
-      .btn-sec i { font-size: 20px; }
-      .btn-sec span { font-size: 13px; }
-      .sidebar { width: 320px; }
-      .sb-header { padding: 35px 30px; }
-      .sb-logo { font-size: 26px; }
-      .sb-link { padding: 20px 30px; font-size: 15px; }
-      .sb-link i { font-size: 22px; }
-    }
-  </style>
+@media(max-width:700px){
+.custom-watermark{font-size:9px;top:60%;left:16%}
+.block-title{font-size:28px}
+.block-box{padding:25px}
+.block-sub{font-size:12px}
+}
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="menu-icon material-icons" onclick="toggleMenu()">notes</div>
-    <div class="logo-container">
-      <span class="logo-text">SPORT<span>LINK</span></span>
-    </div>
-    <div class="header-live">
-      <div class="h-dot"></div> <span class="h-text">LIVE</span>
-    </div>
-  </header>
+<div class="shaka-video-container" id="player-container">
+<video id="video" autoplay muted playsinline preload="metadata"></video>
+<div class="custom-watermark"> </div>
+</div>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar" id="sidebar">
-    <div class="sb-header">
-      <div class="sb-logo">SPORT<span>LINK</span></div>
-    </div>
-    <a href="javascript:location.reload()" class="sb-link"><i class="material-icons">refresh</i> Refresh Page</a>
-    <a href="javascript:sharePage()" class="sb-link"><i class="material-icons">share</i> Share App</a>
-    <a href="https://whatsapp.com/channel/0029VbC2oQsC6ZvmwpR3v73v" target="_blank" rel="noopener" class="sb-link">
-      <svg class="wa-sb-icon" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp Channel
-    </a>
-  </div>
-  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
-  <!-- VIDEO -->
-  <div class="video-wrapper">
-    <div class="video-container">
-      <iframe src="https://star-sports-jt1.pages.dev/ss1eng" allowfullscreen allow="autoplay; encrypted-media" scrolling="no"></iframe>
-    </div>
-    <div class="video-bar"></div>
-  </div>
-
-  <!-- TICKER -->
-  <div class="ticker-wrap">
-    <div class="ticker-text">
-       WELCOME TO SPORTLINK 🏏 | HD LIVE STREAM — NO BUFFERING 🔥 | JOIN OUR WHATSAPP CHANNEL FOR UPDATES 📲 | SHARE THIS LINK WITH FRIENDS 🔗 | ENJOY THE GAME
-    </div>
-  </div>
-
-  <!-- ACTIONS -->
-  <div class="action-section">
-    
-    <!-- SMALL DAILY VIEWS CARD -->
-    <div class="daily-views-card">
-      <i class="material-icons icon">bar_chart</i>
-      <span class="text">Daily Views</span>
-      <span class="value" id="total-views-count">...</span>
-    </div>
-
-    <!-- BUTTONS -->
-    <div class="btn-group">
-
-      <!-- WHATSAPP CHANNEL BUTTON -->
-      <a href="https://whatsapp.com/channel/0029VbC2oQsC6ZvmwpR3v73v" target="_blank" rel="noopener" class="btn-whatsapp">
-        <svg class="wa-icon" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        <div class="wa-label">
-          <small>Stay Updated</small>
-          <strong>Join WhatsApp Channel</strong>
-        </div>
-        <i class="material-icons wa-arrow">chevron_right</i>
-      </a>
-
-      <div class="btn-secondary-grid">
-        <a href="javascript:void(0)" onclick="sharePage()" class="btn-sec">
-          <i class="material-icons">share</i>
-          <span>Share</span>
-        </a>
-        <a href="javascript:location.reload()" class="btn-sec">
-          <i class="material-icons">refresh</i>
-          <span>Refresh</span>
-        </a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- FIREBASE LOGIC -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
-  <script>
-    const WEBSITE_ID = "channel_english";
-
-    function toggleMenu() {
-      document.getElementById('sidebar').classList.toggle('open');
-      document.getElementById('overlay').classList.toggle('active');
-    }
-
-    async function sharePage() {
-      if(navigator.share) await navigator.share({title:'Watch Live Sports HD', text: 'Watch Live Sports HD without buffering!', url: window.location.href});
-      else {
-        const dummy = document.createElement("textarea");
-        document.body.appendChild(dummy);
-        dummy.value = window.location.href;
-        dummy.select();
-        document.execCommand("copy");
-        document.body.removeChild(dummy);
-        alert("Link copied to clipboard!");
+<script>
+(function(){
+  
+  function isSandboxedEnv(){
+    try {
+      if (window.self === window.top) return false;
+      if (window.frameElement && window.frameElement.hasAttribute("sandbox")) {
+        return true;
       }
+      try {
+        document.domain = document.domain;
+        if (window.frameElement && !window.frameElement.getAttribute("sandbox")) {
+             return false;
+        }
+      } catch (e) {
+         return true;
+      }
+      return false;
+    } catch(e) {
+      return true;
     }
-
-    // --- FIREBASE CONFIG ---
-    const firebaseConfig = {
-      apiKey: "AIzaSyA-vR50CMDYJVHApJir-6fmgRqhFiqQDU8",
-      authDomain: "my-website-cricket.firebaseapp.com",
-      databaseURL: "https://my-website-cricket-default-rtdb.firebaseio.com",
-      projectId: "my-website-cricket",
-      storageBucket: "my-website-cricket.appspot.com",
-      messagingSenderId: "664276981494",
-      appId: "1:664276981494:web:4d6b5cd5c55f6b6b18fed7"
-    };
-
-    if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    const todayStr = new Date().toISOString().slice(0, 10); 
-    const visitRef = db.ref('daily_stats_v4/' + WEBSITE_ID + '/' + todayStr);
+  }
+  function triggerBlockScreen(title, message){
+    const container = document.getElementById("player-container");
+    const video = document.getElementById("video");
     
-    visitRef.transaction(current => (current || 0) + 1);
+    try {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    } catch(e){}
 
-    visitRef.on('value', (snap) => {
-      document.getElementById('total-views-count').innerText = (snap.val() || 0).toLocaleString();
+    const overlay = document.createElement("div");
+    overlay.className = "block-overlay";
+    overlay.id = "sandbox-block-display";
+    overlay.innerHTML = `
+      <div class="block-box">
+        <div class="block-title">${title}</div>
+        <div class="block-sub">${message}</div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    container.style.display = 'none';
+  }
+  if(isSandboxedEnv()){
+
+    triggerBlockScreen('Disable Sandbox', 'Opening Chrome Browser Only & Disable Ad blocker');
+    return;
+  }
+  const CONFIG={
+    streamUrl:"https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_HD1_BTS/output/index.mpd",
+    keyId:"965dc2ddb1d85138ad787999a7f30ca5",
+    key:"859695076e67fe961836b564db6d689c",
+    cookieUrl:"https://allrounder-live3.pages.dev/api/cookie.json"
+  };
+
+  document.addEventListener("DOMContentLoaded",async()=>{
+
+    shaka.polyfill.installAll();
+    if(!shaka.Player.isBrowserSupported()) return;
+
+    const video=document.getElementById("video");
+    const container=document.getElementById("player-container");
+
+    video.muted=true;
+
+    const player=new shaka.Player();
+    await player.attach(video);
+
+    const ui=new shaka.ui.Overlay(player,container,video);
+
+    ui.configure({
+  addBigPlayButton: true,
+  controlPanelElements: [
+    "mute",           // First - volume/mute button
+    "play_pause",     // Second - play/pause button  
+    "time_and_duration", // Third - timeline timings (00:00 / 00:00)
+    "spacer",
+    "quality",
+    "picture_in_picture",
+    "fullscreen"
+  ],
+  seekBarColors: {
+    base: "white",
+    buffered: "red", 
+    played: "green"
+  }
+});
+
+    player.configure({
+      drm:{clearKeys:{[CONFIG.keyId]:CONFIG.key}},
+      manifest:{defaultPresentationDelay:5},
+      streaming:{
+        lowLatencyMode:true,
+        bufferingGoal:10,
+        rebufferingGoal:2,
+        safeSeekOffset:5
+      }
     });
 
-  </script>
+    let cookieValue="";
+
+    try{
+      const response=await fetch(CONFIG.cookieUrl,{cache:"no-store"});
+      const data=await response.json();
+      cookieValue=data.cookie||"";
+    }catch(e){}
+
+    if(cookieValue){
+      player.getNetworkingEngine().registerRequestFilter((type,request)=>{
+        request.headers["Referer"]="https://www.jiotv.com/";
+        request.headers["User-Agent"]="plaYtv/7.1.5 (Linux;Android 13) ExoPlayerLib/2.11.6";
+        request.headers["Cookie"]=cookieValue;
+
+        let urlCookie=cookieValue.startsWith("__hdnea__=")?cookieValue.substring(10):cookieValue;
+
+        if((type===shaka.net.NetworkingEngine.RequestType.MANIFEST||
+        type===shaka.net.NetworkingEngine.RequestType.SEGMENT)&&
+        !request.uris[0].includes("__hdnea__")){
+          const sep=request.uris[0].includes("?")?"&":"?";
+          request.uris[0]+=sep+"__hdnea__="+urlCookie;
+        }
+      });
+    }
+
+    try{
+      await player.load(CONFIG.streamUrl);
+      video.play().catch(()=>{});
+    }catch(e){}
+
+    video.addEventListener("play",()=>{
+      video.muted=false;
+    });
+
+  });
+})();
+</script>
+  <script>(function(s){s.dataset.zone='10603308',s.src='https://bvtpk.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
 </body>
 </html>
